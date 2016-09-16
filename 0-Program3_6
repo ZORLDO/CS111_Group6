@@ -1,0 +1,56 @@
+// Chapter No. 3 Exercise No. 6
+// Program3_6_Sihota.java
+// Group Programmers: Jasdeep Sihota
+// Date Last Modified: September 16, 2016
+
+
+//Problem Statement: This program will read an integer from 1 to 15 and display a pyramid of that many lines.
+
+// DATA DICTIONARY
+// ---------------
+// Name	 				Type			Value Range				Description
+// line1				int					short       number of lines for the pyramid
+// line2			    int                short        
+
+import java.util.*;
+
+public class Program3_6_Sihota.java
+{
+    public static void main(String[] args)
+    {
+       System.out.println("Hello out there.");
+        System.out.println("I will display a pyramid of 1 to 15 lines for you.");
+       
+        System.out.println("Enter the number of lines below:");
+        
+        int line1, line2;
+
+        Scanner keyboard = new Scanner(System.in);
+        line1 = keyboard.nextInt( );
+       
+  for (int i = 1; i <= line1; i++) {
+    
+   for (line2 = 1; line2 <= (line1 - i); line2++) {
+    System.out.print("  ");
+   }
+    
+ 
+   for (line2 = i; line2 >= 1; line2--) {
+    System.out.print(line2 + " ");
+   }
+    
+  
+   for (line2 = 2; line2 <= i; line2++) {
+    System.out.print(line2 + " ");
+   }
+   System.out.println();
+ 
+  }
+ 
+        
+       
+   			
+   		}
+        	
+       
+    }
