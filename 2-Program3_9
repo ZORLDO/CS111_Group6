@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+import java.lang.Exception;
+import java.lang.Integer;
+
+public class sqr {
+
+
+  public static void main(String[] args) {
+
+
+          
+         
+         //Creating the text file//
+         try {   
+            PrintWriter writer                  = new PrintWriter("numbers.txt");
+            PrintWriter sqr_root                = new PrintWriter("sqr_root.txt");
+        //Gathering user input//
+            Scanner keyboard                    = new Scanner(System.in);
+            String input                        = keyboard.nextLine();
+            writer.println(input);
+            writer.close();
+            
+       //Reading our first file//
+        
+            BufferedReader reader               = new BufferedReader(new FileReader("numbers.txt"));
+            String data                         = reader.readLine();
+      
+      //Splitting our 50 floats into an array//
+      
+            String[] splitData = data.split(" ");
+            
+      //Converting our array to doubles and getting the square roots//
+            
+            double[] parsed = new double[splitData.length];
+            double[] sqroot = new double[parsed.length];
+            
+            for (int i = 0; i<splitData.length; i++) {
+               parsed[i] = Double.valueOf(splitData[i]);
+               sqroot[i] = Math.sqrt(parsed[i]);
+               sqr_root.println(sqroot[i]);
+            
+               
+            }   
+            sqr_root.close();
+
+         } catch (IOException e) {
+                    
+            System.out.printf("ERROR: %s\n", e);
+            }
+
+   }
+   
+ }
