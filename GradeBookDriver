@@ -1,20 +1,22 @@
 /* Chapter No. 4 - Group Project
    File Name:          GradeBookDriver.java
-   Programmer:         Michael Gray
+   Programmer:         Michael Gray, Aaron Haitin, Jarred S, Jasdeep Sihota
    Date Last Modified: October 12, 2016
 
-   Problem Statement: 
+   Problem Statement: Create a Grade Book class that contains instance variables for the course name, number of credits, room #, and student capacity.    Create mutator/accessor (or commonly known as getter's/setter's) methods for each of the instance variables.
+
+Create a driver program that creates a grade book and presents the user with a menu.
    
    
    Overall Plan:
-   1. 
-   2. 
-   3. 
-   4. 
-   5. 
-   6. 
-   7. 
-   8. 
+   1. Create a GradeBook class with all necessary variables (see stylesheet on other file for info)
+   2. Create a new gradebook
+   3. Greet the user with a menu that lets you select using integers
+   4. Declare all variables that the user might input
+   5. Prompt the user for a variable called "input"
+   6. Create a while loop with a switch inside of it
+   7. Set corresponing cases to allow value assignments
+   8. After each case, ask the user what they'd like to do next. Allow them to choose an option from the menu again.
    
    main class - GradeBookDriver
    
@@ -22,7 +24,11 @@
    ---------------
    NAME	TYPE		   TYPE        DESCRIPTION
    =================== =========== ====================
-
+   creds               double      contains user-submitted number of credits for the course
+   maxCap              int         contains user-submitted maximum capacity for the course
+   number              string      contains user-submitted room number
+   name                string      contains user-submitted course name
+   input               int         the integer entered by the user to make menu selections
     
     
 */
@@ -37,30 +43,28 @@ public class GradeBookDriver {
         GradeBook gradebook = new GradeBook();
         
         //Presenting the user with a menu
-        System.out.println("Gradebook app 1.0");
-        System.out.println();
-        System.out.println("Please select from the options below");
-        System.out.println();
+        System.out.println("Welcome to Gradebook app 1.0! \n");        
+        System.out.println("Please select from the options below\n");
         System.out.println("(1) View Grade Book");
         System.out.println("(2) Set Course Name");
         System.out.println("(3) Set Number of Credits");
         System.out.println("(4) Set Room #");
         System.out.println("(5) Set Capacity");
-        System.out.println("(6) Quit the Program");
-        System.out.println();
+        System.out.println("(6) Quit the Program\n");
+
         
         
         //variable declaration
-        Scanner keyboard = new Scanner(System.in);
+        Scanner keyboard       = new Scanner(System.in);
         
         String number, name;
         double creds;
         int maxCap;
-        int input        = keyboard.nextInt();
+        int input              = keyboard.nextInt();
         
         
         
-        //selection loop      
+        //selection loop and switch              
         while(input != 6) 
         {
             switch(input) 
