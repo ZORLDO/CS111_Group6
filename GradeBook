@@ -1,0 +1,65 @@
+/* Chapter  4 Group Project
+   File Name:          GradeBook.java
+   Programmer:         Michael Gray
+   Date Last Modified: October 9, 2016
+
+   See main class for full stylesheet and problem statement.
+    
+    
+*/
+
+import java.util.*;
+
+public class GradeBook {
+
+    private String courseName, roomNumber;
+    private double credits;
+    private int capacity;
+  
+
+
+    public void displayMessage()
+    {
+        System.out.println("Welcome to GradeBook v1.0");
+    }    
+    public void setcourseName(String name)
+    {
+        courseName      = name;
+    } 
+    public void setroomNumber(String number)
+    {
+       roomNumber       = number;    
+    }
+    public void setcredits(double creds)
+    {
+        credits         = creds;
+    }
+    public void setcapacity(int maxCap)
+    {
+        capacity        = maxCap;
+    }
+    public String getcourseName()
+    {
+        return courseName;
+    }
+    public String getroomNumber()
+    {
+        return roomNumber;
+    }
+    public double getCredits()
+    {
+        return credits;
+    }
+    public int getCapacity()
+    {
+        return capacity;
+    }
+    
+    public void printout() {
+    System.out.println ("Course Name: " + courseName);
+    System.out.println ("Room Number: " + roomNumber);
+    System.out.println ("Credits: " + credits);
+    System.out.println ("Maximum Capacity: " + capacity);
+    System.out.println ();
+    }
+}
