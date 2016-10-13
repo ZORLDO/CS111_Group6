@@ -1,11 +1,32 @@
 /* Chapter  4 Group Project
    File Name:          GradeBook.java
    Programmer:         Michael Gray
-   Date Last Modified: October 9, 2016
+   Date Last Modified: October 12, 2016
 
-   See main class for full stylesheet and problem statement.
-    
-    
+   Problem Statement: Create a Grade Book class that contains instance variables for the course name, number of credits, room #, and student capacity.    Create mutator/accessor (or commonly known as getter's/setter's) methods for each of the instance variables.
+
+
+   
+   
+   Overall Plan: 
+   1. Create a new class called GradeBook
+   2. Declare all private instance variables
+   3. Create setters for course name, room number, credits, and capacity
+   4. Create getters for course name, room number, credits, and capacity
+   5. Create a printout method that displays all of the information assigned to the GradeBook
+
+   
+   main class - GradeBookDriver
+   
+   DATA DICTIONARY
+   ---------------
+   NAME	TYPE		   TYPE        DESCRIPTION
+   =================== =========== ====================
+   courseName          String      the name of the course, null until changed by user
+   roomNumber          String      the room number, null until changed by user
+   credits             double      the number of credits that the course is worth, 0.0 until changed by user
+   capacity            int         the maximum capacity for the course, 0 until changed by user
+   
 */
 
 import java.util.*;
@@ -16,12 +37,7 @@ public class GradeBook {
     private double credits;
     private int capacity;
   
-
-
-    public void displayMessage()
-    {
-        System.out.println("Welcome to GradeBook v1.0");
-    }    
+   
     public void setcourseName(String name)
     {
         courseName      = name;
@@ -63,3 +79,15 @@ public class GradeBook {
     System.out.println ();
     }
 }
+    
+
+
+
+
+
+
+
+
+
+
+
