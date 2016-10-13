@@ -4,7 +4,6 @@
    Date Last Modified: October 12, 2016
 
    Problem Statement: Create a Grade Book class that contains instance variables for the course name, number of credits, room #, and student capacity.    Create mutator/accessor (or commonly known as getter's/setter's) methods for each of the instance variables.
-
 Create a driver program that creates a grade book and presents the user with a menu.
    
    
