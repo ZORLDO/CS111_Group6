@@ -1,0 +1,114 @@
+/* Chapter No. 4 - Group Project
+   File Name:          GradeBookDriver.java
+   Programmer:         Michael Gray
+   Date Last Modified: October 12, 2016
+
+   Problem Statement: 
+   
+   
+   Overall Plan:
+   1. 
+   2. 
+   3. 
+   4. 
+   5. 
+   6. 
+   7. 
+   8. 
+   
+   main class - GradeBookDriver
+   
+   DATA DICTIONARY
+   ---------------
+   NAME	TYPE		   TYPE        DESCRIPTION
+   =================== =========== ====================
+
+    
+    
+*/
+
+import java.util.*;
+
+public class GradeBookDriver {
+
+    public static void main(String[] args) {
+    
+        //creating a new gradebook
+        GradeBook gradebook = new GradeBook();
+        
+        //Presenting the user with a menu
+        System.out.println("Gradebook app 1.0");
+        System.out.println();
+        System.out.println("Please select from the options below");
+        System.out.println();
+        System.out.println("(1) View Grade Book");
+        System.out.println("(2) Set Course Name");
+        System.out.println("(3) Set Number of Credits");
+        System.out.println("(4) Set Room #");
+        System.out.println("(5) Set Capacity");
+        System.out.println("(6) Quit the Program");
+        System.out.println();
+        
+        
+        //variable declaration
+        Scanner keyboard = new Scanner(System.in);
+        
+        String number, name;
+        double creds;
+        int maxCap;
+        int input        = keyboard.nextInt();
+        
+        
+        
+        //selection loop      
+        while(input != 6) 
+        {
+            switch(input) 
+            {
+            case 1:  System.out.println();
+                     gradebook.printout();
+                     System.out.printf("\nWhat would you like to do next? ");
+                     input    = keyboard.nextInt();
+                     break;
+            
+            case 2:  System.out.printf("\nPlease enter the course name: ");
+                     name     = keyboard.next();
+                     gradebook.setcourseName(name);
+                     System.out.printf("\nYou've set the course name to " + name + ". What else would you like to do? ");
+                     input    = keyboard.nextInt();
+                     break;
+            
+            case 3:  System.out.printf("\nPlease set number of credits: ");
+                     creds    = keyboard.nextDouble();
+                     gradebook.setcredits(creds);
+                     System.out.printf("\nYou've set the number of credits to " + creds + ". What else would you like to do? ");
+                     input    = keyboard.nextInt();
+                     break;
+            
+            case 4:  System.out.printf("\nPlease set the room number: ");
+                     number   = keyboard.next();
+                     gradebook.setroomNumber(number);
+                     System.out.printf("\nYou've set the room number to " + number + ". What else would you like to do? ");
+                     input    = keyboard.nextInt();
+                     break;
+            
+            case 5:  System.out.printf("\nPlease set the maximum capacity of the class: ");
+                     maxCap    = keyboard.nextInt();
+                     gradebook.setcapacity(maxCap);
+                     System.out.printf("\nYou've set the maximum capacity of the class to " + maxCap + ". What else would you like to do? ");
+                     input    = keyboard.nextInt();
+                     break;
+            
+            default: 
+                     break;
+                     
+                     
+        }
+
+
+        }
+               
+        
+}
+    
+}
