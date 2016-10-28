@@ -1,0 +1,67 @@
+import java.util.*;
+
+
+
+public class CreditCardAcct {
+
+    public static final double acctLimit = 10000.00;
+    
+    
+	//declaring first instance variables
+	private String cardName, cardNumber;
+    private double acctBalance;
+	
+	private String[] purchasesMade;
+
+	//setters + getters
+    public void setacctBalance(double total)
+	{
+		acctBalance      = total;
+	}
+	public void setcardName(String name)
+	{
+		cardName      = name;
+	}
+	public void setcardNumber(String number)
+	{
+		cardNumber    = number;
+	}
+	public void setpurchasesMade(String[] purchases)
+	{
+		purchasesMade = purchases;
+	}
+	public String getcardName()
+	{
+		return cardName;
+	}
+	public String getcardNumber()
+	{
+		return cardNumber;
+	}
+	public String[] getpurchasesMade()
+	{
+		return purchasesMade;
+	}
+	public double getacctBalance()
+	{
+		return acctBalance;
+	}
+	
+	//create new cardholders
+	
+
+
+	
+	//printout method
+	public void printOut()
+	{
+		System.out.println(" Cardholder name : " + cardName);
+		System.out.println(" Card number     : " + cardNumber);
+		System.out.printf(" Purchase history: " + Arrays.toString(purchasesMade));
+		System.out.println();
+		System.out.println(" Account Balance : " + acctBalance);
+		System.out.println();
+	}
+}	
+		
+   
