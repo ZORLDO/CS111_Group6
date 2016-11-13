@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class ArrayGroup6
+{
+	private static final int MAX_INPUT = 50;
+	private static final int SENTINAL = -9999;
+
+	public static void main(String[] args)
+	{
+		int a[] 	 = new int[MAX_INPUT];
+		int count[]  = new int[MAX_INPUT];
+		int input, index = 0;
+
+		Scanner keyboard = new Scanner(System.in);
+		
+		// allows user to count 0's
+		for(int i = 0; i < a.length; i++)
+			a[i] = SENTINAL;
+		
+		// populates a
+		System.out.println("Enter integers to be counted: (enter -9999 to stop)");
+		input = keyboard.nextInt();
+		for(int i = 0; i < a.length && input != SENTINAL; i++) {
+			a[i] = input;
+			input = keyboard.nextInt();
+		}
+		
+		// sorts a to descending order
+		a = SelectionSort.sort(a);
+
+		// counts occurances of each unique element in a
+		for(int i = 0; i < a.length; ) {
+			count[index]++;
+			for(int j = i; j < a.length - 1; j++) {
+				if (a[i] == a[j + 1])
+					count[index]++;
+			}
+			i += count[index];
+			index++;
+		}
+		//prints unique entries and counts of each
+		System.out.println("N      Count");
+		for(int i = 0, j = 0; i < a.length - 1; i++) {
+			if (a[i] != a[i + 1]) {
+				System.out.println(a[i] + "\t" + count[j]);
+				j++;
+			}		
+		}
+	}
+}
