@@ -7,9 +7,9 @@ public class ArrayGroup6
 
 	public static void main(String[] args)
 	{
-		int a[] 	 = new int[MAX_INPUT];
+		int a[] 	 = new int[MAX_INPUT + 1];
 		int count[]  = new int[MAX_INPUT];
-		int input, index = 0;
+		int input = 0, index = 0;
 
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -19,19 +19,18 @@ public class ArrayGroup6
 		
 		// populates a
 		System.out.println("Enter integers to be counted: (enter -9999 to stop)");
-		input = keyboard.nextInt();
-		for(int i = 0; i < a.length && input != SENTINAL; i++) {
-			a[i] = input;
+		for(int i = 0; i < MAX_INPUT && input != SENTINAL; i++) {
 			input = keyboard.nextInt();
+			a[i] = input;
 		}
 		
 		// sorts a to descending order
 		a = SelectionSort.sort(a);
 
 		// counts occurances of each unique element in a
-		for(int i = 0; i < a.length; ) {
+		for(int i = 0; i < MAX_INPUT; ) {
 			count[index]++;
-			for(int j = i; j < a.length - 1; j++) {
+			for(int j = i; j < MAX_INPUT; j++) {
 				if (a[i] == a[j + 1])
 					count[index]++;
 			}
@@ -40,7 +39,7 @@ public class ArrayGroup6
 		}
 		//prints unique entries and counts of each
 		System.out.println("N      Count");
-		for(int i = 0, j = 0; i < a.length - 1; i++) {
+		for(int i = 0, j = 0; i < MAX_INPUT; i++) {
 			if (a[i] != a[i + 1]) {
 				System.out.println(a[i] + "\t" + count[j]);
 				j++;
