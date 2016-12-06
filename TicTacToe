@@ -1,250 +1,5 @@
-import java.lang.Integer;
-import java.util.*;
-
-
-public class TicTacToe {
-
-   private String[] data = new String[9];
-
-   private static char SYMBOL_O = 'O';
-   private static char SYMBOL_X = 'X';
-   private static int  moveCount = 0;
-   
-
-
-   private int moveCounter = 0; 
-
-   public void initialize() {
-
-      for(int i=0; i< data.length; i++) {
-          data[i] = String.valueOf(i+1);
-      }
-   }
-
-//------------ P R I N T  M E T H O D -------------------------------//
-
-   public void print() {
-
-      for(int i = 0, k = 0; i < 3; i++) {
-      	for(int j = 0; j < 3; j++)
-      	{
-      		System.out.print( " " + data[k++]);
-      		if(j!=2)
-      			System.out.print(" | ");
-      	}
-      	if( i != 2)
-      		System.out.print("\n--------------\n");
-      }
-      System.out.println();
-   }
-
-
-   private void move(int i, String ch) {
-      data[i-1] = ch;
-   }
-
-
-   /**
-     * Check if the move is valid
-   **/
-   private boolean check(int i) {
-     
-       //bounds check 
-       if(i <1 || i > 9) {
-          System.out.println("Please select a valid slot");
-          return false;
-       }
-
-
-       //check if position is taken
-       int position = i-1;
-
-       if(data[position] == "X" || data[position] == "O") {
-          System.out.println("Please select a valid unused slot");
-          return false;
-       }
-
-
-       System.out.println(i);  
-       return true;
-   }
-
-  
-   private boolean isGameOver(int player) {
-       //check the following
-
-       //any 3 adjacent squares are the same
-       //same but vertical
-       //2 diagonals
-
-      /*
-        |0|1|2|
-        |3|4|5|
-        |6|7|8|
-       */
-
-       //check horizontal
-       if( (data[1] == data[0]) && (data[2] == data[0]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-       if( (data[3] == data[4]) && (data[5] == data[4]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-       if( (data[7] == data[6]) && (data[8] == data[7]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-
-
-       //vertical checks
-       if( (data[0] == data[3]) && (data[6] == data[3]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-       if( (data[1] == data[4]) && (data[1] == data[7]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-       if( (data[2] == data[5]) && (data[8] == data[2]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }       
-
-
-
-       //2 diagonal checks
-       if( (data[0] == data[4]) && (data[8] == data[0]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-       if( (data[2] == data[4]) && (data[6] == data[4]) ) {
-          System.out.println("Player " + player + " won");
-          return true; 
-       }
-
-
-       //check if all slots are taken by O or X in which case its a draw & return true
-       if(moveCount == 5) {
-          System.out.println("The game is a draw..");
-          return true;
-       } 
-               
-       
-       
-       
-
-       return false;
-   }
-   
-//------------------------C H E C K  T W O------------------------------------------------//
-   public int check_two()
-	{
-		//check rows
-		for(int i = 0; i < 7; i+=3)
-		{
-			if(data[i] == data[i+1] && data[i+2] != "X" && data[i+2] != "O")
-				return (i+2);
-			if(data[i] == data[i+2] && data[i+1] != "X" && data[i+1] != "O")
-				return (i+1);
-			if(data[i+1] == data[i+2] && data[i] != "X" && data[i] != "O")
-				return (i);
-		}
-		//check cols
-		for(int i = 0; i < 3; i++)
-		{
-			if(data[i] == data[i+3] && data[i+6] != "X" && data[i+6] != "O")
-				return (i+6);
-			if(data[i] == data[i+6] && data[i+3] != "X" && data[i+3] != "O")
-				return (i+3);
-			if(data[i+3] == data[i+6] && data[i] != "X" && data[i] != "O")
-				return (i);
-		}
-		
-		//check diagonals
-		if(data[0] == data[4] && data[8] != "X" && data[8] != "O")
-			return 8;
-		if(data[0] == data[8] && data[4] != "X" && data[4] != "O")
-			return 4;
-		if(data[4] == data[8] && data[0] != "X" && data[0] != "O")
-			return 0;
-	
-		if(data[2] == data[4] && data[6] != "X" && data[6] != "O")
-			return 6;
-		if(data[2] == data[6] && data[4] != "X" && data[4] != "O")
-			return 4;
-		if(data[4] == data[6] && data[2] != "X" && data[2] != "O")
-			return 2;
-		
-		return data.length;
-	}
-
-
-
-
-
-
-//------------------------T W O  P L A Y E R  M O D E------------------------------------//
-  
-   public void play() {
-
-       this.initialize();
-
-       int player = 1;
-
-       Scanner keyboard = new Scanner(System.in);
-
-       while(true) {
-         this.print();
-
-         System.out.println("Player " + player + ". Select a number to make a move or q to quit");
-         String choice = keyboard.nextLine();
-
-         if(choice.equalsIgnoreCase("q")) {
-           break;
-         }else{
-           try {
-              int pos = Integer.valueOf(choice.trim());
-              boolean status = check(pos);
-           
-              if(status) {
-                if(player == 1) {
-                   this.move(pos, "X");
-                   moveCount++;
-                   //now check if the game is over or still in play
-                   if(isGameOver(player)) {
-                     System.out.println("Game Over");  //print what player or if its a draw
-                     break;
-                   } 
-            player++;
-                 } else {
-                   this.move(pos, "O");
-                   if(isGameOver(player)) {
-                     System.out.println("Game Over");  //print what player or if its a draw
-                     break;
-                   } 
-                   player = 1;
-                }
-   
-              } 
-           }catch(NumberFormatException e) {
-           } 
-         }
-         
-       } //while
-
-       this.print();       
-   }
-   
-//------------------------ N O V I C E  A I ---------------------------
-   public void novice() {
+//------------------------INTERMEDIATE------------------------------------//
+public void intermediate() {
 
        this.initialize();
 
@@ -263,9 +18,12 @@ public class TicTacToe {
          choice = keyboard.nextLine();
          }
          else {
-         
-         choice = (" " +((int)(Math.random() * 9) + 1));
-         }         
+         	
+         if(check_two() != 9)
+         	choice = (" " + (check_two() + 1));
+         else
+         	choice = (" " +((int)(Math.random() * 9) + 1));    
+        }
          if(choice.equalsIgnoreCase("q")) {
            break;
          }else{
@@ -293,46 +51,12 @@ public class TicTacToe {
                 }
    
               } 
-           }catch(NumberFormatException e) {
+           } catch(NumberFormatException e) {
            } 
+           
          }
          
        } //while
 
        this.print();       
    }   
-
-
-
-   public static void main(String[] args) {
-   
-      Scanner keyboard = new Scanner(System.in);
-
-      System.out.printf("\n\nWelcome to TicTacToe v1.2\n Please select from the menu Below:\n");
-      System.out.println("(1) Play a 2 player game");
-      System.out.println("(2) Play novice AI");
-      System.out.println("(3) Play intermediate AI");
-      
-      int input = keyboard.nextInt();
-      if (input < 1 || input > 3) {
-        System.out.println("Please select a valid number");
-        input = keyboard.nextInt();
-      }
-      TicTacToe tictactoe = new TicTacToe();
-      
-      switch(input) {
-      
-        case 1: tictactoe.play();
-                break;
-        
-        case 2:tictactoe.novice();
-                break;
-        
-        case 3: break;
-        
-        default: break;
-        
-      }
-                
-      }
-      }
