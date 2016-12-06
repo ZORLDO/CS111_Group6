@@ -21,6 +21,8 @@ public class TicTacToe {
       }
    }
 
+//------------ P R I N T  M E T H O D -------------------------------//
+
    public void print() {
 
       for(int i = 0, k = 0; i < 3; i++) {
@@ -35,6 +37,7 @@ public class TicTacToe {
       }
       System.out.println();
    }
+
 
    private void move(int i, String ch) {
       data[i-1] = ch;
@@ -141,6 +144,7 @@ public class TicTacToe {
        return false;
    }
    
+//------------------------C H E C K  T W O------------------------------------------------//
    public int check_two()
 	{
 		//check rows
@@ -181,6 +185,13 @@ public class TicTacToe {
 		
 		return data.length;
 	}
+
+
+
+
+
+
+//------------------------T W O  P L A Y E R  M O D E------------------------------------//
   
    public void play() {
 
@@ -231,17 +242,97 @@ public class TicTacToe {
 
        this.print();       
    }
+   
+//------------------------ N O V I C E  A I ---------------------------
+   public void novice() {
+
+       this.initialize();
+
+       int player = 1;
+
+       Scanner keyboard = new Scanner(System.in);
+       String choice;
+       
+        
+       while(true) {
+         
+
+         System.out.println("Player " + player + ". Select a number to make a move or q to quit");
+         if(player==1) {
+         this.print();         
+         choice = keyboard.nextLine();
+         }
+         else {
+         
+         choice = (" " +((int)(Math.random() * 9) + 1));
+         }         
+         if(choice.equalsIgnoreCase("q")) {
+           break;
+         }else{
+           try {
+              int pos = Integer.valueOf(choice.trim());
+              boolean status = check(pos);
+           
+              if(status) {
+                if(player == 1) {
+                   this.move(pos, "X");
+                   moveCount++;
+                   //now check if the game is over or still in play
+                   if(isGameOver(player)) {
+                     System.out.println("Game Over");  //print what player or if its a draw
+                     break;
+                   } 
+            player++;
+                 } else {
+                   this.move(pos, "O");
+                   if(isGameOver(player)) {
+                     System.out.println("Game Over");  //print what player or if its a draw
+                     break;
+                   } 
+                   player = 1;
+                }
+   
+              } 
+           }catch(NumberFormatException e) {
+           } 
+         }
+         
+       } //while
+
+       this.print();       
+   }   
 
 
 
    public static void main(String[] args) {
+   
+      Scanner keyboard = new Scanner(System.in);
 
+      System.out.printf("\n\nWelcome to TicTacToe v1.2\n Please select from the menu Below:\n");
+      System.out.println("(1) Play a 2 player game");
+      System.out.println("(2) Play novice AI");
+      System.out.println("(3) Play intermediate AI");
+      
+      int input = keyboard.nextInt();
+      if (input < 1 || input > 3) {
+        System.out.println("Please select a valid number");
+        input = keyboard.nextInt();
+      }
       TicTacToe tictactoe = new TicTacToe();
-  
-      tictactoe.play();
-
-     
-
-   }
-
-}
+      
+      switch(input) {
+      
+        case 1: tictactoe.play();
+                break;
+        
+        case 2:tictactoe.novice();
+                break;
+        
+        case 3: break;
+        
+        default: break;
+        
+      }
+                
+      }
+      }
