@@ -23,14 +23,17 @@ public class TicTacToe {
 
    public void print() {
 
-      for(int i=0; i< data.length; i++) {
-          System.out.print('|');
-          if( ( (i+1) % 3 ) == 0 ) {
-             System.out.println(data[i] + '|');
-          } else {
-             System.out.print(data[i]);
-          }
+      for(int i = 0, k = 0; i < 3; i++) {
+      	for(int j = 0; j < 3; j++)
+      	{
+      		System.out.print( " " + data[k++]);
+      		if(j!=2)
+      			System.out.print(" | ");
+      	}
+      	if( i != 2)
+      		System.out.print("\n--------------\n");
       }
+      System.out.println();
    }
 
    private void move(int i, String ch) {
