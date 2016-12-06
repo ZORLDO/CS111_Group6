@@ -137,7 +137,47 @@ public class TicTacToe {
 
        return false;
    }
-
+   
+   public int check_two()
+	{
+		//check rows
+		for(int i = 0; i < 7; i+=3)
+		{
+			if(data[i] == data[i+1] && data[i+2] != "X" && data[i+2] != "O")
+				return (i+2);
+			if(data[i] == data[i+2] && data[i+1] != "X" && data[i+1] != "O")
+				return (i+1);
+			if(data[i+1] == data[i+2] && data[i] != "X" && data[i] != "O")
+				return (i);
+		}
+		//check cols
+		for(int i = 0; i < 3; i++)
+		{
+			if(data[i] == data[i+3] && data[i+6] != "X" && data[i+6] != "O")
+				return (i+6);
+			if(data[i] == data[i+6] && data[i+3] != "X" && data[i+3] != "O")
+				return (i+3);
+			if(data[i+3] == data[i+6] && data[i] != "X" && data[i] != "O")
+				return (i);
+		}
+		
+		//check diagonals
+		if(data[0] == data[4] && data[8] != "X" && data[8] != "O")
+			return 8;
+		if(data[0] == data[8] && data[4] != "X" && data[4] != "O")
+			return 4;
+		if(data[4] == data[8] && data[0] != "X" && data[0] != "O")
+			return 0;
+	
+		if(data[2] == data[4] && data[6] != "X" && data[6] != "O")
+			return 6;
+		if(data[2] == data[6] && data[4] != "X" && data[4] != "O")
+			return 4;
+		if(data[4] == data[6] && data[2] != "X" && data[2] != "O")
+			return 2;
+		
+		return data.length;
+	}
   
    public void play() {
 
